@@ -1,6 +1,7 @@
 package com.example.hondanaoyuki.basefragment
 
 
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,13 @@ class MainActivity : AppCompatActivity() {
         val button: Button = findViewById(R.id.button)
 
         button.setOnClickListener { _ ->
+
+            if(SoundPlayerComponents.isPlaying()) {
+                SoundPlayerComponents.stopSound()
+            } else {
+                SoundPlayerComponents.startSound(this, R.raw.voice, getPackageName().toString())
+            }
+
             val fragmentManager = supportFragmentManager
             val fragmentTransaction =
                     fragmentManager.beginTransaction()
