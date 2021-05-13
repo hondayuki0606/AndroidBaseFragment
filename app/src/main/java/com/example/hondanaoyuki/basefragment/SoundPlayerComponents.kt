@@ -16,16 +16,17 @@ object SoundPlayerComponents {
 
     var mMediaPlayer: MediaPlayer? = null
 
-    fun start(context: Context?, rId: Int?, onCompletionListener: OnCompletionListener?) {
+    var mOnCompletionListener: OnCompletionListener? = null
 
-        if (context == null || rId == null) return
+    fun start(rId: Int?) {
+
+        if (mContext == null || rId == null) return
 
         try {
             if (mMediaPlayer == null) {
-                mContext = context
                 mMediaPlayer = MediaPlayer()
-                if(onCompletionListener != null) {
-                    mMediaPlayer!!.setOnCompletionListener(onCompletionListener)
+                if(mOnCompletionListener != null) {
+                    mMediaPlayer!!.setOnCompletionListener(mOnCompletionListener)
                 }
             }
             mMediaPlayer!!.reset()
@@ -42,12 +43,13 @@ object SoundPlayerComponents {
     }
 
     fun stop() {
-        if (mMediaPlayer == null) return
+        if (mContext == null || mMediaPlayer == null) return
 
         try {
             mMediaPlayer!!.stop()
             mMediaPlayer!!.release()
             mMediaPlayer = null
+            mOnCompletionListener = null
         } catch (e: IllegalArgumentException) {
             println(e)
         } catch (e: IOException) {
@@ -56,7 +58,7 @@ object SoundPlayerComponents {
     }
 
     fun restart() {
-        if (mMediaPlayer == null) return
+        if (mContext == null || mMediaPlayer == null) return
 
         try {
             mMediaPlayer!!.start()
@@ -68,7 +70,7 @@ object SoundPlayerComponents {
     }
 
     fun pause() {
-        if (mMediaPlayer == null) return
+        if (mContext == null || mMediaPlayer == null) return
 
         try {
             mMediaPlayer!!.pause()
@@ -80,7 +82,7 @@ object SoundPlayerComponents {
     }
 
     fun isPlaying(): Boolean {
-        if (mMediaPlayer == null) {
+        if (mContext == null || mMediaPlayer == null) {
             return false
         }
         return mMediaPlayer!!.isPlaying()

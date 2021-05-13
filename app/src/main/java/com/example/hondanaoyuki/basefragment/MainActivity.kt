@@ -1,13 +1,13 @@
 package com.example.hondanaoyuki.basefragment
 
-import android.media.MediaPlayer
+import android.media.MediaPlayer.OnCompletionListener
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    var mOnCompletionListener = MediaPlayer.OnCompletionListener {
+    var mOnCompletionListener = OnCompletionListener {
 
         val s: Int = 1
     }
@@ -20,11 +20,13 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener { _ ->
 
+            SoundPlayerComponents.mContext = this
+            SoundPlayerComponents.mOnCompletionListener = mOnCompletionListener
             if(SoundPlayerComponents.isPlaying()) {
                 SoundPlayerComponents.stop()
             } else {
                 val s : String = getPackageName().toString()
-                SoundPlayerComponents.start(this, R.raw.voice, mOnCompletionListener)
+                SoundPlayerComponents.start(R.raw.voice)
             }
 
             val fragmentManager = supportFragmentManager
