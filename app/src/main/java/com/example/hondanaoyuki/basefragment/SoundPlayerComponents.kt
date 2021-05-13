@@ -16,38 +16,35 @@ object SoundPlayerComponents {
 
     fun startSound(context: Context?, rId: Int?, onCompletionListener: OnCompletionListener) {
 
-        try{
-
+        try {
             if (mMediaPlayer == null) {
-                mMediaPlayer = MediaPlayer.create(context!!, rId!!)
+                mMediaPlayer = MediaPlayer()
                 mMediaPlayer!!.setOnCompletionListener(onCompletionListener)
                 mOnCompletionListener = onCompletionListener
-            } else {
-                mMediaPlayer!!.reset()
-//            val uri = Uri.parse("android.resource://com.example.hondanaoyuki.basefragment/raw/voice")
-                val uri = Uri.parse("android.resource://com.example.hondanaoyuki.basefragment/" + rId)
-                mMediaPlayer!!.setDataSource(context!!, uri);
-                mMediaPlayer!!.prepare();
             }
+            mMediaPlayer!!.reset()
+//            val uri = Uri.parse("android.resource://com.example.hondanaoyuki.basefragment/raw/voice")
+            val uri = Uri.parse("android.resource://com.example.hondanaoyuki.basefragment/" + rId)
+            mMediaPlayer!!.setDataSource(context!!, uri)
+            mMediaPlayer!!.prepare()
             mMediaPlayer!!.start()
-        } catch(e: IllegalArgumentException) {
+        } catch (e: IllegalArgumentException) {
             println(e)
-        } catch(e: IOException) {
+        } catch (e: IOException) {
             println(e)
         }
     }
 
-    fun stopSound()  {
-
+    fun stopSound() {
         if (mMediaPlayer == null) return
 
         try {
             mMediaPlayer!!.stop()
-            mMediaPlayer!!.release();// this will clear memory
+            mMediaPlayer!!.release()
             mMediaPlayer = null
-        } catch(e: IllegalArgumentException) {
+        } catch (e: IllegalArgumentException) {
             println(e)
-        } catch(e: IOException) {
+        } catch (e: IOException) {
             println(e)
         }
     }
