@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener { _ ->
 
             if(SoundPlayerComponents.isPlaying()) {
-                SoundPlayerComponents.stopSound()
+                SoundPlayerComponents.stop()
             } else {
                 val s : String = getPackageName().toString()
-                SoundPlayerComponents.startSound(this, R.raw.voice, mOnCompletionListener)
+                SoundPlayerComponents.start(this, R.raw.voice, mOnCompletionListener)
             }
 
             val fragmentManager = supportFragmentManager
