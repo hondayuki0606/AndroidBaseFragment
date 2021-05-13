@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
             SoundPlayerComponents.mContext = this
             SoundPlayerComponents.mOnCompletionListener = mOnCompletionListener
-            if(SoundPlayerComponents.isPlaying()) {
+            if (SoundPlayerComponents.isPlaying()) {
                 SoundPlayerComponents.stop()
             } else {
                 val s : String = getPackageName().toString()
