@@ -1,13 +1,17 @@
 package com.example.hondanaoyuki.basefragment
 
-
-import android.net.Uri
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-
 class MainActivity : AppCompatActivity() {
+
+    var mOnCompletionListener = MediaPlayer.OnCompletionListener {
+
+        val s: Int = 1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,7 +23,8 @@ class MainActivity : AppCompatActivity() {
             if(SoundPlayerComponents.isPlaying()) {
                 SoundPlayerComponents.stopSound()
             } else {
-                SoundPlayerComponents.startSound(this, R.raw.voice, getPackageName().toString())
+                val s : String = getPackageName().toString()
+                SoundPlayerComponents.startSound(this, R.raw.voice, mOnCompletionListener)
             }
 
             val fragmentManager = supportFragmentManager
