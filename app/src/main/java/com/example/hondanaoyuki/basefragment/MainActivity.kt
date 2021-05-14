@@ -5,12 +5,18 @@ import android.media.MediaPlayer.OnCompletionListener
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hondanaoyuki.basefragment.application.App
+import java.security.AccessControlContext
+import java.security.AccessController.getContext
 
 class MainActivity : AppCompatActivity() {
 
     var mOnCompletionListener = OnCompletionListener {
 
         val s: Int = 1
+//        val a:Context = App.context
+        val b:App = App.instance
+        val bs: Int = 1
     }
 
     val mCom:SoundPlayerComponents = SoundPlayerComponents()
@@ -21,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.button)
 
+        val s : AccessControlContext? = getContext()
+        val u :Context = getApplicationContext()
         button.setOnClickListener { _ ->
 
             mCom.setOnCompletionListener(mOnCompletionListener)
