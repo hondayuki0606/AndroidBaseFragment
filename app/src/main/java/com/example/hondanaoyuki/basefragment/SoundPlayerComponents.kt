@@ -85,6 +85,6 @@ class SoundPlayerComponents {
 
     init {
         mMediaPlayer = MediaPlayer()
-        mContext = App.getAppContext()
+        mContext = App.instance
     }
 }

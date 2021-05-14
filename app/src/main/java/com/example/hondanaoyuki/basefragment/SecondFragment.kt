@@ -23,7 +23,7 @@ class SecondFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val button: Button = view.findViewById(R.id.secondButton)
-
+        requireContext()
         button.setOnClickListener { _ ->
             replaceFragment(R.id.fragment_container, ThirdFragment())
         }
