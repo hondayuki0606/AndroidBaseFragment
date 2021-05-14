@@ -4,35 +4,34 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.media.MediaPlayer.OnCompletionListener
 import android.net.Uri
+import com.example.hondanaoyuki.basefragment.application.App
 import java.io.IOException
 
-object SoundPlayerComponents {
+class SoundPlayerComponents {
 
-
-    const val PATH2 ="android.resource://com.example.hondanaoyuki.basefragment/raw/voice"
-    const val PATH3 = "android.resource://com.example.hondanaoyuki.basefragment/"
+    companion object {
+        const val PATH2 ="android.resource://com.example.hondanaoyuki.basefragment/raw/voice"
+        const val PATH3 = "android.resource://com.example.hondanaoyuki.basefragment/"
+    }
 
     var mContext: Context? = null
 
-    var mMediaPlayer: MediaPlayer? = null
+    private var mMediaPlayer: MediaPlayer? = null
 
-    var mOnCompletionListener: OnCompletionListener? = null
+    private var mOnCompletionListener: OnCompletionListener? = null
 
     fun start(rId: Int?) {
 
         if (mContext == null || rId == null) return
 
         try {
-            if (mMediaPlayer == null) {
-                mMediaPlayer = MediaPlayer()
+
                 if(mOnCompletionListener != null) {
                     mMediaPlayer!!.setOnCompletionListener(mOnCompletionListener)
                 }
-            }
+
             mMediaPlayer!!.reset()
-//            val uri = Uri.parse(PATH2)
-            val uri = Uri.parse(PATH3 + rId)
-            mMediaPlayer!!.setDataSource(mContext!!, uri)
+            mMediaPlayer!!.setDataSource(mContext!!, Uri.parse(PATH3 + rId))
             mMediaPlayer!!.prepare()
             mMediaPlayer!!.start()
         } catch (e: IllegalArgumentException) {
@@ -41,6 +40,11 @@ object SoundPlayerComponents {
             println(e)
         }
     }
+
+    fun setOnCompletionListener(onCompletionListener: OnCompletionListener) {
+        mOnCompletionListener = onCompletionListener
+    }
+
 
     fun stop() {
         if (mContext == null || mMediaPlayer == null) return
@@ -52,8 +56,6 @@ object SoundPlayerComponents {
             mOnCompletionListener = null
         } catch (e: IllegalArgumentException) {
             println(e)
-        } catch (e: IOException) {
-            println(e)
         }
     }
 
@@ -64,14 +66,10 @@ object SoundPlayerComponents {
             mMediaPlayer!!.start()
         } catch (e: IllegalArgumentException) {
             println(e)
-        } catch (e: IOException) {
-            println(e)
         }
     }
 
     fun pause() {
-        if (mContext == null || mMediaPlayer == null) return
-
         try {
             mMediaPlayer!!.pause()
         } catch (e: IllegalArgumentException) {
@@ -82,9 +80,11 @@ object SoundPlayerComponents {
     }
 
     fun isPlaying(): Boolean {
-        if (mContext == null || mMediaPlayer == null) {
-            return false
-        }
         return mMediaPlayer!!.isPlaying()
+    }
+
+    init {
+        mMediaPlayer = MediaPlayer()
+        mContext = App.getAppContext()
     }
 }

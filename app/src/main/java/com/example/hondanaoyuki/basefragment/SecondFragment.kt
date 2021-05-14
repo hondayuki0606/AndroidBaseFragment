@@ -25,7 +25,6 @@ class SecondFragment : BaseFragment() {
         val button: Button = view.findViewById(R.id.secondButton)
 
         button.setOnClickListener { _ ->
-            SoundPlayerComponents.stop()
             replaceFragment(R.id.fragment_container, ThirdFragment())
         }
 
