@@ -14,24 +14,20 @@ class SoundPlayerComponents {
         const val PATH3 = "android.resource://com.example.hondanaoyuki.basefragment/"
     }
 
-    var mContext: Context? = null
-
-    private var mMediaPlayer: MediaPlayer? = null
+    private var mMediaPlayer: MediaPlayer? = MediaPlayer()
 
     private var mOnCompletionListener: OnCompletionListener? = null
 
     fun start(rId: Int?) {
 
-        if (mContext == null || rId == null) return
-
         try {
 
-                if(mOnCompletionListener != null) {
-                    mMediaPlayer!!.setOnCompletionListener(mOnCompletionListener)
-                }
+            if(mOnCompletionListener != null) {
+                mMediaPlayer!!.setOnCompletionListener(mOnCompletionListener)
+            }
 
             mMediaPlayer!!.reset()
-            mMediaPlayer!!.setDataSource(mContext!!, Uri.parse(PATH3 + rId))
+            mMediaPlayer!!.setDataSource(App.instance, Uri.parse(PATH3 + rId))
             mMediaPlayer!!.prepare()
             mMediaPlayer!!.start()
         } catch (e: IllegalArgumentException) {
@@ -47,21 +43,14 @@ class SoundPlayerComponents {
 
 
     fun stop() {
-        if (mContext == null || mMediaPlayer == null) return
-
         try {
             mMediaPlayer!!.stop()
-            mMediaPlayer!!.release()
-            mMediaPlayer = null
-            mOnCompletionListener = null
         } catch (e: IllegalArgumentException) {
             println(e)
         }
     }
 
     fun restart() {
-        if (mContext == null || mMediaPlayer == null) return
-
         try {
             mMediaPlayer!!.start()
         } catch (e: IllegalArgumentException) {
@@ -81,10 +70,5 @@ class SoundPlayerComponents {
 
     fun isPlaying(): Boolean {
         return mMediaPlayer!!.isPlaying()
-    }
-
-    init {
-        mMediaPlayer = MediaPlayer()
-        mContext = App.instance
     }
 }
