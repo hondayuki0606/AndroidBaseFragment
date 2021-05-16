@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val bs: Int = 1
     }
 
-    val mCom:SoundPlayerComponents = SoundPlayerComponents()
+    val mSoundPlayer = SoundPlayerComponents()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,19 +27,18 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.button)
 
-        val s : AccessControlContext? = getContext()
-        val u :Context = getApplicationContext()
+//        val s : AccessControlContext? = getContext()
+//        val u :Context = getApplicationContext()
         button.setOnClickListener { _ ->
 
-            mCom.setOnCompletionListener(mOnCompletionListener)
-            if (mCom.isPlaying()) {
-                mCom.stop()
+            mSoundPlayer.setOnCompletionListener(mOnCompletionListener)
+            if (mSoundPlayer.isPlaying()) {
+                mSoundPlayer.stop()
             } else {
-                val s : String = getPackageName().toString()
-                mCom.start(R.raw.voice)
+//                val s : String = getPackageName().toString()
+                mSoundPlayer.start(R.raw.voice)
             }
-//            App.get
-//            val Context : Context = App.getAppContext()
+
             val fragmentManager = supportFragmentManager
             val fragmentTransaction =
                     fragmentManager.beginTransaction()
