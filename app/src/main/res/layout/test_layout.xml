@@ -1,7 +1,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:parentTag="LinearLayout">
-<!--    tools:parentTag="com.example.hondanaoyuki.basefragment.BaseView">-->
+<!--    tools:parentTag="com.example.basefragment.BaseView">-->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

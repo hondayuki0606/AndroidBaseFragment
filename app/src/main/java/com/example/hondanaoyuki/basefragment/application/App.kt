@@ -1,4 +1,4 @@
-package com.example.hondanaoyuki.basefragment.application
+package com.example.basefragment.application
 
 import android.app.Application
 //import android.content.Context

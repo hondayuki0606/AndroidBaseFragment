@@ -1,4 +1,4 @@
-package com.example.hondanaoyuki.basefragment.fragment
+package com.example.basefragment.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import com.example.hondanaoyuki.basefragment.BaseFragment
-import com.example.hondanaoyuki.basefragment.R
+import com.example.basefragment.BaseFragment
+import com.example.basefragment.R
 
 class FirstFragment : BaseFragment() {
     override fun onCreateView(

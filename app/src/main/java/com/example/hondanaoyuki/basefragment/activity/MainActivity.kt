@@ -1,13 +1,13 @@
-package com.example.hondanaoyuki.basefragment.activity
+package com.example.basefragment.activity
 
 import android.media.MediaPlayer.OnCompletionListener
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.hondanaoyuki.basefragment.R
-import com.example.hondanaoyuki.basefragment.application.App
-import com.example.hondanaoyuki.basefragment.components.SoundPlayerComponents
-import com.example.hondanaoyuki.basefragment.fragment.MainFragment
+import com.example.basefragment.R
+import com.example.basefragment.application.App
+import com.example.basefragment.components.SoundPlayerComponents
+import com.example.basefragment.fragment.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

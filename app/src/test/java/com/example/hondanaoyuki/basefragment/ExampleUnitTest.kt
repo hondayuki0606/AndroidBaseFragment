@@ -1,4 +1,4 @@
-package com.example.hondanaoyuki.basefragment
+package com.example.basefragment
 
 import org.junit.Test
 

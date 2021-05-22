@@ -1,4 +1,4 @@
-package com.example.hondanaoyuki.basefragment
+package com.example.basefragment
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

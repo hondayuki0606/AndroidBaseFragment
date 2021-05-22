@@ -1,4 +1,4 @@
-package com.example.hondanaoyuki.basefragment.view;
+package com.example.basefragment.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

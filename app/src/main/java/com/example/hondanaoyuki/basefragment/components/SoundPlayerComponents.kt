@@ -1,16 +1,16 @@
-package com.example.hondanaoyuki.basefragment.components
+package com.example.basefragment.components
 
 import android.media.MediaPlayer
 import android.media.MediaPlayer.OnCompletionListener
 import android.net.Uri
-import com.example.hondanaoyuki.basefragment.application.App
+import com.example.basefragment.application.App
 import java.io.IOException
 
 class SoundPlayerComponents {
 
     companion object {
-        const val PATH2 ="android.resource://com.example.hondanaoyuki.basefragment/raw/voice"
-        const val PATH3 = "android.resource://com.example.hondanaoyuki.basefragment/"
+        const val PATH2 ="android.resource://com.example.basefragment/raw/voice"
+        const val PATH3 = "android.resource://com.example.basefragment/"
     }
 
     private var mMediaPlayer: MediaPlayer? = MediaPlayer()
